@@ -57,7 +57,7 @@ app.use('/api', limiter);
 app.use(express.json({ limit: '10kb' }));
 
 // cookie parser middleware
-app.use(cookieParser('secret'));
+app.use(cookieParser(process.env.COOKIE_PARSER_SECRET));
 
 // data sanitization against NoSQL query injection
 app.use(mongoSanitize());
