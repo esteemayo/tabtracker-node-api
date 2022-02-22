@@ -19,8 +19,8 @@ const mongoURI = process.env.DATABASE.replace(
 );
 
 mongoose
-  .connect(db)
-  .then(() => console.log(`Connected to MongoDB → ${db}`.gray.bold));
+  .connect(mongoURI)
+  .then(() => console.log(`Connected to MongoDB → ${mongoURI}`.gray.bold));
 
 app.set('port', process.env.PORT);
 
