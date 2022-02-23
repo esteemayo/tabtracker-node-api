@@ -25,6 +25,7 @@ mongoose
   .connect(mongoURI)
   .then(() => console.log(`Connected to MongoDB → ${mongoURI}`.gray.bold));
 
+// start server
 app.set('port', process.env.PORT || 7071);
 
 const server = app.listen(app.get('port'), () =>
