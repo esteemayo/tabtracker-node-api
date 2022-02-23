@@ -7,7 +7,7 @@ const createSendToken = (user, statusCode, req, res) => {
     ),
     httpOnly: true,
     signed: true,
-    secure: req.secure || req.headers['x-forwarded-proto'],
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
   });
 
   const { password, ...rest } = user._doc;

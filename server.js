@@ -11,18 +11,21 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
+// db local
 const db = process.env.DATABASE_LOCAL;
 
+// atlas mongo uri
 const mongoURI = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
 
+// mongoDB connection
 mongoose
   .connect(mongoURI)
   .then(() => console.log(`Connected to MongoDB → ${mongoURI}`.gray.bold));
 
-app.set('port', process.env.PORT);
+app.set('port', process.env.PORT || 7071);
 
 const server = app.listen(app.get('port'), () =>
   console.log(`Server running at port → ${server.address().port}`.blue.bold)
@@ -33,5 +36,12 @@ process.on('unhandledRejection', (err) => {
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
+  });
+});
+
+process.on('SIGTERM', () => {
+  console.log('👏 SIGTERM RECEIVED, Shutting down gracefully...');
+  server.close(() => {
+    console.log('🔥 Process terminated!');
   });
 });
