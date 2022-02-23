@@ -638,10 +638,10 @@ components:
         confirmPassword:
           type: string
       example:
-        name: Testing User
-        email: testing@example.com
-        password: test1234
-        confirmPassword: test1234
+        name: ''
+        email: ''
+        password: ''
+        confirmPassword: ''
     UPDATECURRENTUSERDATAREQUEST:
       title: UPDATE CURRENT USER DATA REQUEST
       required:
@@ -654,9 +654,9 @@ components:
         email:
           type: string
       example:
-        name: Testing User
-        email: testing@example.com
-    LOGINREQUEST:
+        name: ''
+        email: ''
+    LOGIN REQUEST:
       title: LOGIN REQUEST
       required:
         - email
@@ -668,8 +668,8 @@ components:
         password:
           type: string
       example:
-        email: jdoe@example.com
-        password: test1234
+        email: ''
+        password: ''
     FORGOTPASSWORDREQUEST:
       title: FORGOT PASSWORD REQUEST
       required:
@@ -679,7 +679,7 @@ components:
         email:
           type: string
       example:
-        email: testing@example.com
+        email: ''
     RESETPASSWORDREQUEST:
       title: RESET PASSWORD REQUEST
       required:
@@ -692,8 +692,8 @@ components:
         confirmPassword:
           type: string
       example:
-        password: test12345
-        confirmPassword: test12345
+        password: ''
+        confirmPassword: ''
     UPDATECURRENTUSERPASSWORDREQUEST:
       title: UPDATE CURRENT USERPASSWORD REQUEST
       required:
@@ -709,9 +709,9 @@ components:
         confirmPassword:
           type: string
       example:
-        passwordCurrent: test12345
-        password: test1234
-        confirmPassword: test1234
+        passwordCurrent: ''
+        password: ''
+        confirmPassword: ''
     CREATENEWHISTORYREQUEST:
       title: CREATE NEW HISTORY REQUEST
       required:
