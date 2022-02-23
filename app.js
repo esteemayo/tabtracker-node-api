@@ -27,9 +27,8 @@ const errorHandlerMiddleware = require('./middlewares/errorHandler');
 
 // start express app
 const app = express();
-console.log(app.get('env'));
-
 // global middleware
+app.set('trust proxy', 1);
 
 // implement CORS
 app.use(cors());
