@@ -1,0 +1,793 @@
+openapi: 3.0.0
+info:
+  title: Tab Tracker
+  contact:
+    name: Emmanuel Adebayo
+    url: https://apitabtracker.herokuapp.com
+    email: eadebayo15@gmail.com
+  version: '1.0'
+servers:
+  - url: https://apitabtracker.herokuapp.com/api/v1
+    variables: {}
+paths:
+  /users/register:
+    post:
+      tags:
+        - User
+      summary: REGISTER
+      operationId: REGISTER
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/REGISTERREQUEST'
+            example:
+              name: Testing User
+              email: testing@example.com
+              password: test1234
+              confirmPassword: test1234
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users:
+    get:
+      tags:
+        - User
+      summary: GET ALL USERS
+      operationId: GETALLUSERS
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    post:
+      tags:
+        - User
+      summary: CREATE NEW USER
+      operationId: CREATENEWUSER
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /users/me:
+    get:
+      tags:
+        - User
+      summary: GET CURRENT USER
+      operationId: GETCURRENTUSER
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /users/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The User ID
+    get:
+      tags:
+        - User
+      summary: GET USER
+      operationId: GETUSER
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    patch:
+      tags:
+        - User
+      summary: UPDATE USER
+      operationId: UPDATEUSER
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          text/plain:
+            schema:
+              type: object
+              example: {}
+            example: {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    delete:
+      tags:
+        - User
+      summary: DELETE USER
+      operationId: DELETEUSER
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /users/update-me:
+    patch:
+      tags:
+        - User
+      summary: UPDATE CURRENT USER DATA
+      operationId: UPDATECURRENTUSERDATA
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UPDATECURRENTUSERDATAREQUEST'
+            example:
+              name: Testing User
+              email: testing@example.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /users/delete-me:
+    delete:
+      tags:
+        - User
+      summary: DELETE CURRENT USER
+      operationId: DELETECURRENTUSER
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: LOGIN
+      operationId: LOGIN
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LOGINREQUEST'
+            example:
+              email: jdoe@example.com
+              password: test1234
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: FORGOT PASSWORD
+      operationId: FORGOTPASSWORD
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FORGOTPASSWORDREQUEST'
+            example:
+              email: testing@example.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users/reset-password/{token}:
+    parameters:
+      - in: path
+        name: token
+        schema:
+          type: string
+        required: true
+        description: Password Reset Token
+    post:
+      tags:
+        - Auth
+      summary: RESET PASSWORD
+      operationId: RESETPASSWORD
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RESETPASSWORDREQUEST'
+            example:
+              password: test12345
+              confirmPassword: test12345
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/update-my-password:
+    patch:
+      tags:
+        - Auth
+      summary: UPDATE CURRENT USER PASSWORD
+      operationId: UPDATECURRENTUSERPASSWORD
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UPDATECURRENTUSERPASSWORDREQUEST'
+            example:
+              passwordCurrent: test12345
+              password: test1234
+              confirmPassword: test1234
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /bookmarks:
+    get:
+      tags:
+        - Bookmark
+      summary: GET ALL BOOKMARK
+      operationId: GETALLBOOKMARK
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    post:
+      tags:
+        - Bookmark
+      summary: CREATE NEW BOOKMARK
+      operationId: CREATENEWBOOKMARK
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          text/plain:
+            schema:
+              type: object
+              example: {}
+            example: {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /bookmarks/song/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: Get Bookmark With Song ID
+    get:
+      tags:
+        - Bookmark
+      summary: GET BOOKMARK BY QUERY
+      operationId: GETBOOKMARKBYQUERY
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /bookmarks/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Bookmark ID
+    get:
+      tags:
+        - Bookmark
+      summary: GET BOOKMARK
+      operationId: GETBOOKMARK
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+
+    patch:
+      tags:
+        - Bookmark
+      summary: UPDATE BOOKMARK
+      operationId: UPDATEBOOKMARK
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          text/plain:
+            schema:
+              type: object
+              example: {}
+            example: {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    delete:
+      tags:
+        - Bookmark
+      summary: DELETE BOOKMARK
+      operationId: DELETEBOOKMARK
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /histories:
+    get:
+      tags:
+        - History
+      summary: GET ALL HISTORIES
+      operationId: GETALLHISTORIES
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    post:
+      tags:
+        - History
+      summary: CREATE NEW HISTORY
+      operationId: CREATENEWHISTORY
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CREATENEWHISTORYREQUEST'
+            example:
+              song: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /histories/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The History ID
+    get:
+      tags:
+        - History
+      summary: GET HISTORY
+      operationId: GETHISTORY
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+
+    patch:
+      tags:
+        - History
+      summary: UPDATE HISTORY
+      operationId: UPDATEHISTORY
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UPDATEHISTORYREQUEST'
+            example:
+              song: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    delete:
+      tags:
+        - History
+      summary: DELETE HISTORY
+      operationId: DELETEHISTORY
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /songs:
+    get:
+      tags:
+        - Song
+      summary: GET ALL SONGS
+      operationId: GETALLSONGS
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+        - Song
+      summary: CREATE NEW SONG
+      operationId: CREATENEWSONG
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CREATENEWSONGREQUEST'
+            example:
+              title: ''
+              artist: ''
+              genre: ''
+              album: ''
+              albumImageUrl: ''
+              youtubeId: ''
+              lyrics: ''
+              tab: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /songs/search:
+    get:
+      tags:
+        - Song
+      summary: SEARCH SONG
+      operationId: SEARCHSONG
+      parameters:
+        - name: q
+          in: query
+          description: ''
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: olamide
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /songs/detail/{slug}:
+    parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+        description: The Song SLUG
+    get:
+      tags:
+        - Song
+      summary: GET SONG BY SLUG
+      operationId: GETSONGBYSLUG
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /songs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Song ID
+    get:
+      tags:
+        - Song
+      summary: GET SONG BY ID
+      operationId: GETSONGBYID
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+
+    patch:
+      tags:
+        - Song
+      summary: UPDATE SONG
+      operationId: UPDATESONG
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UPDATESONGREQUEST'
+            example:
+              title: ''
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+
+    delete:
+      tags:
+        - Song
+      summary: DELETE SONG
+      operationId: DELETESONG
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+components:
+  schemas:
+    REGISTERREQUEST:
+      title: REGISTER REQUEST
+      required:
+        - name
+        - email
+        - password
+        - confirmPassword
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+      example:
+        name: Testing User
+        email: testing@example.com
+        password: test1234
+        confirmPassword: test1234
+    UPDATECURRENTUSERDATAREQUEST:
+      title: UPDATE CURRENT USER DATA REQUEST
+      required:
+        - name
+        - email
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+      example:
+        name: Testing User
+        email: testing@example.com
+    LOGINREQUEST:
+      title: LOGIN REQUEST
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: jdoe@example.com
+        password: test1234
+    FORGOTPASSWORDREQUEST:
+      title: FORGOT PASSWORD REQUEST
+      required:
+        - email
+      type: object
+      properties:
+        email:
+          type: string
+      example:
+        email: testing@example.com
+    RESETPASSWORDREQUEST:
+      title: RESET PASSWORD REQUEST
+      required:
+        - password
+        - confirmPassword
+      type: object
+      properties:
+        password:
+          type: string
+        confirmPassword:
+          type: string
+      example:
+        password: test12345
+        confirmPassword: test12345
+    UPDATECURRENTUSERPASSWORDREQUEST:
+      title: UPDATE CURRENT USERPASSWORD REQUEST
+      required:
+        - passwordCurrent
+        - password
+        - confirmPassword
+      type: object
+      properties:
+        passwordCurrent:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+      example:
+        passwordCurrent: test12345
+        password: test1234
+        confirmPassword: test1234
+    CREATENEWHISTORYREQUEST:
+      title: CREATE NEW HISTORY REQUEST
+      required:
+        - song
+      type: object
+      properties:
+        song:
+          type: string
+      example:
+        song: ''
+    UPDATEHISTORYREQUEST:
+      title: UPDATE HISTORY REQUEST
+      required:
+        - song
+      type: object
+      properties:
+        song:
+          type: string
+      example:
+        song: ''
+    CREATENEWSONGREQUEST:
+      title: CREATE NEW SONG REQUEST
+      required:
+        - title
+        - artist
+        - genre
+        - album
+        - albumImageUrl
+        - youtubeId
+        - lyrics
+        - tab
+      type: object
+      properties:
+        title:
+          type: string
+        artist:
+          type: string
+        genre:
+          type: string
+        album:
+          type: string
+        albumImageUrl:
+          type: string
+        youtubeId:
+          type: string
+        lyrics:
+          type: string
+        tab:
+          type: string
+      example:
+        title: ''
+        artist: ''
+        genre: ''
+        album: ''
+        albumImageUrl: ''
+        youtubeId: ''
+        lyrics: ''
+        tab: ''
+    UPDATESONGREQUEST:
+      title: UPDATE SONG REQUEST
+      required:
+        - title
+      type: object
+      properties:
+        title:
+          type: string
+      example:
+        title: ''
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+  - name: User
+  - name: Auth
+  - name: Bookmark
+  - name: History
+  - name: Song
