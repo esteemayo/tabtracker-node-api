@@ -22,7 +22,7 @@ exports.register = asyncWrapper(async (req, res, next) => {
 
   const user = await User.create({ ...userInputs });
 
-  createSendToken(user, StatusCodes.CREATED, res);
+  createSendToken(user, StatusCodes.CREATED, req, res);
 });
 
 exports.updateMe = asyncWrapper(async (req, res, next) => {

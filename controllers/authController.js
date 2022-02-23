@@ -27,7 +27,7 @@ exports.login = asyncWrapper(async (req, res, next) => {
     return next(new UnathenticatedError('Incorrect email or password'));
   }
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 exports.protect = asyncWrapper(async (req, res, next) => {
@@ -186,7 +186,7 @@ exports.resetPassword = asyncWrapper(async (req, res, next) => {
   user.passwordResetExpires = undefined;
   await user.save();
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 exports.updatePassword = asyncWrapper(async (req, res, next) => {
@@ -200,5 +200,5 @@ exports.updatePassword = asyncWrapper(async (req, res, next) => {
   user.confirmPassword = req.body.confirmPassword;
   await user.save();
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
